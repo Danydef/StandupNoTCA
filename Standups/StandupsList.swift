@@ -10,6 +10,7 @@ import SwiftUINavigation
 import SwiftUI
 import IdentifiedCollections
 
+@MainActor
 final class StandupsListModel: ObservableObject {
     @Published var destination: Destination? {
         didSet { bind() }
@@ -17,6 +18,7 @@ final class StandupsListModel: ObservableObject {
     @Published var standups: IdentifiedArrayOf<Standup>
     
     private var destinationCandellable: AnyCancellable?
+    private var cancellables: Set<AnyCancellable> = []
 
     enum Destination {
         case add(EditStandupModel)
@@ -24,11 +26,13 @@ final class StandupsListModel: ObservableObject {
     }
     
     init(
-        destination: Destination? = nil,
-        standups: IdentifiedArrayOf<Standup> = []
+        destination: Destination? = nil
     ) {
-        self.standups = standups
+        self.standups = []
         self.destination = destination
+        
+        loadStandups()
+        prepareStandupsToSave()
         bind()
     }
     
@@ -88,6 +92,31 @@ final class StandupsListModel: ObservableObject {
         case .add, .none:
             break
         }
+    }
+    
+    private func loadStandups() {
+        do {
+            standups = try JSONDecoder().decode(
+                IdentifiedArray.self,
+                from: Data(contentsOf: .standups)
+            )
+        } catch {
+            // TODO: Alert
+        }
+    }
+    
+    private func prepareStandupsToSave() {
+        $standups
+            .dropFirst()
+            .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+            .sink { standups in
+                do {
+                    try JSONEncoder().encode(standups).write(to: .standups)
+                } catch {
+                    // TODO: Alert
+                }
+            }
+            .store(in: &cancellables)
     }
 }
 
@@ -180,12 +209,12 @@ extension LabelStyle where Self == TrailingIconLabelStyle {
     static var trailingIcon: Self { Self() }
 }
 
+extension URL {
+    static let standups = Self.documentsDirectory.appending(component: "standups.json")
+}
+
 #Preview {
     StandupsList(
-        model: StandupsListModel(
-            standups: [
-                .mock
-            ]
-        )
+        model: StandupsListModel()
     )
 }

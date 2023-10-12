@@ -8,7 +8,9 @@
 import SwiftUI
 import XCTestDynamicOverlay
 import SwiftUINavigation
+@preconcurrency import Speech
 
+@MainActor
 final class RecordMettingModel: ObservableObject {
     let standud: Standup
     
@@ -16,6 +18,8 @@ final class RecordMettingModel: ObservableObject {
     @Published var dismiss = false
     @Published var secondsElapsed = 0
     @Published var speakerIndex = 0
+    
+    private var transcript = ""
     
     enum Destination {
         case alert(AlertState<AlertAction>)
@@ -26,7 +30,7 @@ final class RecordMettingModel: ObservableObject {
         case confirmDiscard
     }
     
-    var onMeetingFinshed: () -> Void = unimplemented("RecordMeetingModel.onMeetingFinished")
+    var onMeetingFinshed: (String) -> Void = unimplemented("RecordMeetingModel.onMeetingFinished")
     
     var durationRemaining: Duration {
         standud.duration - .seconds(secondsElapsed)
@@ -86,7 +90,7 @@ final class RecordMettingModel: ObservableObject {
         switch action {
         case .confirmSave:
             dismiss = true
-            onMeetingFinshed()
+            onMeetingFinshed(transcript)
         case .confirmDiscard:
             dismiss = true
         case .none:
@@ -96,22 +100,60 @@ final class RecordMettingModel: ObservableObject {
     
     @MainActor
     func task() async {
+        let authorizationStatus = await requestAuthorization()
+        
         do {
-            while true {
-                try await Task.sleep(for: .seconds(1))
-                guard !isAlertOpen else { continue }
-                secondsElapsed += 1
-                
-                if secondsElapsed.isMultiple(of: Int(standud.durationPerAttendee.components.seconds)) {
-                    if speakerIndex == standud.attendees.count - 1 {
-                        onMeetingFinshed()
-                        dismiss = true
-                        break
+            try await withThrowingTaskGroup(of: Void.self) { group in
+                if authorizationStatus == .authorized {
+                    group.addTask {
+                        try await self.startSpeechRecognition()
                     }
-                    speakerIndex += 1
                 }
+
+                group.addTask {
+                    try await self.startTimer()
+                }
+                
+                try await group.waitForAll()
             }
-        } catch {}
+        } catch {
+            destination = .alert(
+                AlertState(title: TextState("Something went wrong"))
+            )
+        }
+    }
+    
+    private func requestAuthorization() async -> SFSpeechRecognizerAuthorizationStatus {
+        await withUnsafeContinuation { conitnuation in
+            SFSpeechRecognizer.requestAuthorization { status in
+                conitnuation.resume(returning: status)
+            }
+        }
+    }
+    
+    private func startSpeechRecognition() async throws {
+        let speech = Speech()
+        let request = SFSpeechAudioBufferRecognitionRequest()
+        for try await result in await speech.startTask(request: request) {
+            transcript =  result.bestTranscription.formattedString
+        }
+    }
+    
+    private func startTimer() async throws {
+        while true {
+            try await Task.sleep(for: .seconds(1))
+            guard !isAlertOpen else { continue }
+            secondsElapsed += 1
+            
+            if secondsElapsed.isMultiple(of: Int(standud.durationPerAttendee.components.seconds)) {
+                if speakerIndex == standud.attendees.count - 1 {
+                    onMeetingFinshed(transcript)
+                    dismiss = true
+                    break
+                }
+                speakerIndex += 1
+            }
+        }
     }
 }
 
