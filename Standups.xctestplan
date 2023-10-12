@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "7A1372BA-14DD-4A97-9F40-1322331E22AB",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Standups.xcodeproj",
+      "identifier" : "650AC1FA2AD408F7008FBF2C",
+      "name" : "Standups"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Standups.xcodeproj",
+        "identifier" : "650AC20A2AD408F8008FBF2C",
+        "name" : "StandupsTests"
+      }
+    }
+  ],
+  "version" : 1
+}

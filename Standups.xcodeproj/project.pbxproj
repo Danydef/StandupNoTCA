@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		650AC1FF2AD408F7008FBF2C /* StandupsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650AC1FE2AD408F7008FBF2C /* StandupsApp.swift */; };
-		650AC2012AD408F7008FBF2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650AC2002AD408F7008FBF2C /* ContentView.swift */; };
 		650AC2032AD408F8008FBF2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 650AC2022AD408F8008FBF2C /* Assets.xcassets */; };
 		650AC2062AD408F8008FBF2C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 650AC2052AD408F8008FBF2C /* Preview Assets.xcassets */; };
 		650AC2102AD408F8008FBF2C /* StandupsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650AC20F2AD408F8008FBF2C /* StandupsTests.swift */; };
@@ -21,6 +20,9 @@
 		6533A1732AD52AA600E1A2E6 /* StandupDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6533A1722AD52AA600E1A2E6 /* StandupDetail.swift */; };
 		656A0B632AD6FE1B002DB9B0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 656A0B622AD6FE1B002DB9B0 /* README.md */; };
 		656A0B662AD7E240002DB9B0 /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A0B652AD7E240002DB9B0 /* Speech.swift */; };
+		656A0B682AD80BB3002DB9B0 /* StandupListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A0B672AD80BB3002DB9B0 /* StandupListTests.swift */; };
+		65853F0C2AD82EF4000AE1F3 /* RecordMeetingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65853F0B2AD82EF4000AE1F3 /* RecordMeetingTests.swift */; };
+		65853F122AD838ED000AE1F3 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 65853F112AD838ED000AE1F3 /* Dependencies */; };
 		65CBEAEC2AD67CE700F69DC1 /* IdentifiedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 65CBEAEB2AD67CE700F69DC1 /* IdentifiedCollections */; };
 		65CBEAEE2AD6816600F69DC1 /* RecordMetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CBEAED2AD6816600F69DC1 /* RecordMetting.swift */; };
 /* End PBXBuildFile section */
@@ -38,7 +40,6 @@
 /* Begin PBXFileReference section */
 		650AC1FB2AD408F7008FBF2C /* Standups.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Standups.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		650AC1FE2AD408F7008FBF2C /* StandupsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupsApp.swift; sourceTree = "<group>"; };
-		650AC2002AD408F7008FBF2C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		650AC2022AD408F8008FBF2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		650AC2052AD408F8008FBF2C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		650AC20B2AD408F8008FBF2C /* StandupsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StandupsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +52,9 @@
 		656A0B622AD6FE1B002DB9B0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		656A0B642AD70476002DB9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		656A0B652AD7E240002DB9B0 /* Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
+		656A0B672AD80BB3002DB9B0 /* StandupListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupListTests.swift; sourceTree = "<group>"; };
+		656A0B692AD82E0A002DB9B0 /* Standups.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Standups.xctestplan; sourceTree = "<group>"; };
+		65853F0B2AD82EF4000AE1F3 /* RecordMeetingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMeetingTests.swift; sourceTree = "<group>"; };
 		65CBEAED2AD6816600F69DC1 /* RecordMetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMetting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65853F122AD838ED000AE1F3 /* Dependencies in Frameworks */,
 				65CBEAEC2AD67CE700F69DC1 /* IdentifiedCollections in Frameworks */,
 				650AC2312AD421BE008FBF2C /* SwiftUINavigation in Frameworks */,
 				650AC22E2AD40B21008FBF2C /* Tagged in Frameworks */,
@@ -78,6 +83,7 @@
 		650AC1F22AD408F6008FBF2C = {
 			isa = PBXGroup;
 			children = (
+				656A0B692AD82E0A002DB9B0 /* Standups.xctestplan */,
 				656A0B622AD6FE1B002DB9B0 /* README.md */,
 				650AC1FD2AD408F7008FBF2C /* Standups */,
 				650AC20E2AD408F8008FBF2C /* StandupsTests */,
@@ -104,7 +110,6 @@
 				656A0B652AD7E240002DB9B0 /* Speech.swift */,
 				650AC1FE2AD408F7008FBF2C /* StandupsApp.swift */,
 				650AC2322AD42405008FBF2C /* EditStandup.swift */,
-				650AC2002AD408F7008FBF2C /* ContentView.swift */,
 				650AC22A2AD40AC0008FBF2C /* Models.swift */,
 				650AC2022AD408F8008FBF2C /* Assets.xcassets */,
 				650AC2042AD408F8008FBF2C /* Preview Content */,
@@ -125,6 +130,8 @@
 			children = (
 				650AC20F2AD408F8008FBF2C /* StandupsTests.swift */,
 				6533A1702AD4736000E1A2E6 /* EditStandupTests.swift */,
+				656A0B672AD80BB3002DB9B0 /* StandupListTests.swift */,
+				65853F0B2AD82EF4000AE1F3 /* RecordMeetingTests.swift */,
 			);
 			path = StandupsTests;
 			sourceTree = "<group>";
@@ -149,6 +156,7 @@
 				650AC22D2AD40B21008FBF2C /* Tagged */,
 				650AC2302AD421BE008FBF2C /* SwiftUINavigation */,
 				65CBEAEB2AD67CE700F69DC1 /* IdentifiedCollections */,
+				65853F112AD838ED000AE1F3 /* Dependencies */,
 			);
 			productName = Standups;
 			productReference = 650AC1FB2AD408F7008FBF2C /* Standups.app */;
@@ -204,6 +212,7 @@
 				650AC22C2AD40B21008FBF2C /* XCRemoteSwiftPackageReference "swift-tagged" */,
 				650AC22F2AD421BE008FBF2C /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
 				65CBEAEA2AD67CE700F69DC1 /* XCRemoteSwiftPackageReference "swift-identified-collections" */,
+				65853F102AD838ED000AE1F3 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
 			);
 			productRefGroup = 650AC1FC2AD408F7008FBF2C /* Products */;
 			projectDirPath = "";
@@ -241,7 +250,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				650AC2332AD42405008FBF2C /* EditStandup.swift in Sources */,
-				650AC2012AD408F7008FBF2C /* ContentView.swift in Sources */,
 				6533A1732AD52AA600E1A2E6 /* StandupDetail.swift in Sources */,
 				65CBEAEE2AD6816600F69DC1 /* RecordMetting.swift in Sources */,
 				650AC2292AD409FC008FBF2C /* StandupsList.swift in Sources */,
@@ -255,7 +263,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				656A0B682AD80BB3002DB9B0 /* StandupListTests.swift in Sources */,
 				650AC2102AD408F8008FBF2C /* StandupsTests.swift in Sources */,
+				65853F0C2AD82EF4000AE1F3 /* RecordMeetingTests.swift in Sources */,
 				6533A1712AD4736000E1A2E6 /* EditStandupTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,6 +555,14 @@
 				minimumVersion = 1.0.2;
 			};
 		};
+		65853F102AD838ED000AE1F3 /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		65CBEAEA2AD67CE700F69DC1 /* XCRemoteSwiftPackageReference "swift-identified-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-identified-collections";
@@ -565,6 +583,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 650AC22F2AD421BE008FBF2C /* XCRemoteSwiftPackageReference "swiftui-navigation" */;
 			productName = SwiftUINavigation;
+		};
+		65853F112AD838ED000AE1F3 /* Dependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65853F102AD838ED000AE1F3 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = Dependencies;
 		};
 		65CBEAEB2AD67CE700F69DC1 /* IdentifiedCollections */ = {
 			isa = XCSwiftPackageProductDependency;

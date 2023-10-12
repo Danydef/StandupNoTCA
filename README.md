@@ -5,6 +5,12 @@
 
 * Todo esto lo solucionaremos en la próxima interación.
 
+## ¿Que hay de nuevo viejo? ##
+
+* Hemos añadido una nueva librería para gestionar dependencias, ahora podemos hacer que el contador pase de forma inmediata cuando hacemos test, mientra que sigue funcionando igual en producción, esto nos permite agilizar los test y hacerlos posibles, algo que no era tan fácil sin el uso de la nueva librería "swift-dependencies"
+
+* Para la próxima intentaremos mejorar las pruebas de persistencias ya que la versión actual hace un grabado real en el simulador, cuando tiramos las pruebas, también vamos a crear una dependencia controlada, para poder probar la parte de la app que hace uso del Framework Speech.
+
 Nos vemos pronto ;)
 
 

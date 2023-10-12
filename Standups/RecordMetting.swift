@@ -5,6 +5,7 @@
 //  Created by Daniel Personal on 11/10/23.
 //
 
+import Dependencies
 import SwiftUI
 import XCTestDynamicOverlay
 import SwiftUINavigation
@@ -20,6 +21,8 @@ final class RecordMettingModel: ObservableObject {
     @Published var speakerIndex = 0
     
     private var transcript = ""
+    
+    @Dependency(\.continuousClock) var clock
     
     enum Destination {
         case alert(AlertState<AlertAction>)
@@ -140,9 +143,7 @@ final class RecordMettingModel: ObservableObject {
     }
     
     private func startTimer() async throws {
-        while true {
-            try await Task.sleep(for: .seconds(1))
-            guard !isAlertOpen else { continue }
+        for await _ in clock.timer(interval: .seconds(1)) where !isAlertOpen  {
             secondsElapsed += 1
             
             if secondsElapsed.isMultiple(of: Int(standud.durationPerAttendee.components.seconds)) {
