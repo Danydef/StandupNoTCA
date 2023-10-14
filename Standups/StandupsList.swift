@@ -11,6 +11,25 @@ import SwiftUINavigation
 import SwiftUI
 import IdentifiedCollections
 
+struct DataManager: Sendable {
+    var load: @Sendable (URL) throws -> Data
+    var save: @Sendable (Data, URL) throws -> Void
+}
+
+extension DataManager: DependencyKey {
+    static let liveValue = DataManager(
+        load: { url in try Data(contentsOf: url) },
+        save: { data, url in try data.write(to: url) }
+    )
+}
+
+extension DependencyValues {
+    var dataManager: DataManager {
+        get { self[DataManager.self] }
+        set { self[DataManager.self] = newValue }
+    }
+}
+
 @MainActor
 final class StandupsListModel: ObservableObject {
     @Published var destination: Destination? {
@@ -21,6 +40,7 @@ final class StandupsListModel: ObservableObject {
     private var destinationCandellable: AnyCancellable?
     private var cancellables: Set<AnyCancellable> = []
 
+    @Dependency(\.dataManager) var dataManager
     @Dependency(\.mainQueue) var mainQueue
     
     enum Destination {
@@ -101,7 +121,7 @@ final class StandupsListModel: ObservableObject {
         do {
             standups = try JSONDecoder().decode(
                 IdentifiedArray.self,
-                from: Data(contentsOf: .standups)
+                from: dataManager.load(.standups)
             )
         } catch {
             // TODO: Alert
@@ -112,9 +132,14 @@ final class StandupsListModel: ObservableObject {
         $standups
             .dropFirst()
             .debounce(for: .seconds(1), scheduler: mainQueue)
-            .sink { standups in
+            .sink { [weak self] standups in
+                guard let self else { return }
                 do {
-                    try JSONEncoder().encode(standups).write(to: .standups)
+                    try self.dataManager.save(
+                        JSONEncoder().encode(standups),
+                        .standups
+                    )
+                    
                 } catch {
                     // TODO: Alert
                 }

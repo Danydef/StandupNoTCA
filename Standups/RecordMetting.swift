@@ -23,6 +23,7 @@ final class RecordMettingModel: ObservableObject {
     private var transcript = ""
     
     @Dependency(\.continuousClock) var clock
+    @Dependency(\.speechClient) var speechClient
     
     enum Destination {
         case alert(AlertState<AlertAction>)
@@ -103,7 +104,7 @@ final class RecordMettingModel: ObservableObject {
     
     @MainActor
     func task() async {
-        let authorizationStatus = await requestAuthorization()
+        let authorizationStatus = await speechClient.requestAuthorization()
         
         do {
             try await withThrowingTaskGroup(of: Void.self) { group in
@@ -126,18 +127,9 @@ final class RecordMettingModel: ObservableObject {
         }
     }
     
-    private func requestAuthorization() async -> SFSpeechRecognizerAuthorizationStatus {
-        await withUnsafeContinuation { conitnuation in
-            SFSpeechRecognizer.requestAuthorization { status in
-                conitnuation.resume(returning: status)
-            }
-        }
-    }
-    
     private func startSpeechRecognition() async throws {
-        let speech = Speech()
         let request = SFSpeechAudioBufferRecognitionRequest()
-        for try await result in await speech.startTask(request: request) {
+        for try await result in await speechClient.startTask(request) {
             transcript =  result.bestTranscription.formattedString
         }
     }

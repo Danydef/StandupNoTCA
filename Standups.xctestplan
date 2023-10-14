@@ -9,11 +9,21 @@
     }
   ],
   "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Standups.xcodeproj",
+          "identifier" : "650AC1FA2AD408F7008FBF2C",
+          "name" : "Standups"
+        }
+      ]
+    },
     "targetForVariableExpansion" : {
       "containerPath" : "container:Standups.xcodeproj",
       "identifier" : "650AC1FA2AD408F7008FBF2C",
       "name" : "Standups"
-    }
+    },
+    "uiTestingScreenshotsLifetime" : "keepNever"
   },
   "testTargets" : [
     {

@@ -19,10 +19,11 @@
 		6533A1712AD4736000E1A2E6 /* EditStandupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6533A1702AD4736000E1A2E6 /* EditStandupTests.swift */; };
 		6533A1732AD52AA600E1A2E6 /* StandupDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6533A1722AD52AA600E1A2E6 /* StandupDetail.swift */; };
 		656A0B632AD6FE1B002DB9B0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 656A0B622AD6FE1B002DB9B0 /* README.md */; };
-		656A0B662AD7E240002DB9B0 /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A0B652AD7E240002DB9B0 /* Speech.swift */; };
 		656A0B682AD80BB3002DB9B0 /* StandupListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656A0B672AD80BB3002DB9B0 /* StandupListTests.swift */; };
 		65853F0C2AD82EF4000AE1F3 /* RecordMeetingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65853F0B2AD82EF4000AE1F3 /* RecordMeetingTests.swift */; };
 		65853F122AD838ED000AE1F3 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 65853F112AD838ED000AE1F3 /* Dependencies */; };
+		65853F142AD86B87000AE1F3 /* DataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65853F132AD86B87000AE1F3 /* DataManagerMock.swift */; };
+		65853F162AD921EB000AE1F3 /* SpeechClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65853F152AD921EB000AE1F3 /* SpeechClient.swift */; };
 		65CBEAEC2AD67CE700F69DC1 /* IdentifiedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 65CBEAEB2AD67CE700F69DC1 /* IdentifiedCollections */; };
 		65CBEAEE2AD6816600F69DC1 /* RecordMetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CBEAED2AD6816600F69DC1 /* RecordMetting.swift */; };
 /* End PBXBuildFile section */
@@ -51,10 +52,11 @@
 		6533A1722AD52AA600E1A2E6 /* StandupDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupDetail.swift; sourceTree = "<group>"; };
 		656A0B622AD6FE1B002DB9B0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		656A0B642AD70476002DB9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		656A0B652AD7E240002DB9B0 /* Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
 		656A0B672AD80BB3002DB9B0 /* StandupListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandupListTests.swift; sourceTree = "<group>"; };
 		656A0B692AD82E0A002DB9B0 /* Standups.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Standups.xctestplan; sourceTree = "<group>"; };
 		65853F0B2AD82EF4000AE1F3 /* RecordMeetingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMeetingTests.swift; sourceTree = "<group>"; };
+		65853F132AD86B87000AE1F3 /* DataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerMock.swift; sourceTree = "<group>"; };
+		65853F152AD921EB000AE1F3 /* SpeechClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechClient.swift; sourceTree = "<group>"; };
 		65CBEAED2AD6816600F69DC1 /* RecordMetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMetting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,7 +109,7 @@
 				650AC2282AD409FC008FBF2C /* StandupsList.swift */,
 				6533A1722AD52AA600E1A2E6 /* StandupDetail.swift */,
 				65CBEAED2AD6816600F69DC1 /* RecordMetting.swift */,
-				656A0B652AD7E240002DB9B0 /* Speech.swift */,
+				65853F152AD921EB000AE1F3 /* SpeechClient.swift */,
 				650AC1FE2AD408F7008FBF2C /* StandupsApp.swift */,
 				650AC2322AD42405008FBF2C /* EditStandup.swift */,
 				650AC22A2AD40AC0008FBF2C /* Models.swift */,
@@ -132,6 +134,7 @@
 				6533A1702AD4736000E1A2E6 /* EditStandupTests.swift */,
 				656A0B672AD80BB3002DB9B0 /* StandupListTests.swift */,
 				65853F0B2AD82EF4000AE1F3 /* RecordMeetingTests.swift */,
+				65853F132AD86B87000AE1F3 /* DataManagerMock.swift */,
 			);
 			path = StandupsTests;
 			sourceTree = "<group>";
@@ -253,9 +256,9 @@
 				6533A1732AD52AA600E1A2E6 /* StandupDetail.swift in Sources */,
 				65CBEAEE2AD6816600F69DC1 /* RecordMetting.swift in Sources */,
 				650AC2292AD409FC008FBF2C /* StandupsList.swift in Sources */,
+				65853F162AD921EB000AE1F3 /* SpeechClient.swift in Sources */,
 				650AC1FF2AD408F7008FBF2C /* StandupsApp.swift in Sources */,
 				650AC22B2AD40AC0008FBF2C /* Models.swift in Sources */,
-				656A0B662AD7E240002DB9B0 /* Speech.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +270,7 @@
 				650AC2102AD408F8008FBF2C /* StandupsTests.swift in Sources */,
 				65853F0C2AD82EF4000AE1F3 /* RecordMeetingTests.swift in Sources */,
 				6533A1712AD4736000E1A2E6 /* EditStandupTests.swift in Sources */,
+				65853F142AD86B87000AE1F3 /* DataManagerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

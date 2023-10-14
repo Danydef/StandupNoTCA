@@ -36,29 +36,29 @@ struct Meeting: Equatable, Identifiable, Codable {
 enum Theme: String, CaseIterable, Equatable, Hashable, Identifiable, Codable {
   case bubblegum
   case buttercup
-  case indigo
+  case sdindigo
   case lavender
-  case magenta
+  case sdmagenta
   case navy
-  case orange
+  case sdorange
   case oxblood
   case periwinkle
   case poppy
-  case purple
+  case sdpurple
   case seafoam
   case sky
   case tan
-  case teal
-  case yellow
+  case sdteal
+  case sdyellow
 
   var id: Self { self }
 
   var accentColor: Color {
     switch self {
-    case .bubblegum, .buttercup, .lavender, .orange, .periwinkle, .poppy, .seafoam, .sky, .tan,
-        .teal, .yellow:
+    case .bubblegum, .buttercup, .lavender, .sdorange, .periwinkle, .poppy, .seafoam, .sky, .tan,
+        .sdteal, .sdyellow:
       return .black
-    case .indigo, .magenta, .navy, .oxblood, .purple:
+    case .sdindigo, .sdmagenta, .navy, .oxblood, .sdpurple:
       return .white
     }
   }
@@ -95,7 +95,7 @@ extension Standup {
           """
       )
     ],
-    theme: .orange,
+    theme: .sdorange,
     title: "Design"
   )
 }

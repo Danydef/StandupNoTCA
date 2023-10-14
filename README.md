@@ -11,6 +11,8 @@
 
 * Para la próxima intentaremos mejorar las pruebas de persistencias ya que la versión actual hace un grabado real en el simulador, cuando tiramos las pruebas, también vamos a crear una dependencia controlada, para poder probar la parte de la app que hace uso del Framework Speech.
 
+* Pues esta sería la última iteración para terminar la app, aún se pueden añadir algunas pruebas más, pero como demostración es suficiente, lo próximo será reescribir esta misma app, pero esta vez usando la arquitectura [TCA](https://github.com/pointfreeco/swift-composable-architecture)
+
 Nos vemos pronto ;)
 
 
